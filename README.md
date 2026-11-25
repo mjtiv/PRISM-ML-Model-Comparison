@@ -108,7 +108,7 @@ All four models identified GAB1, PTPN11, GRB2, and RRAS2 among their top 25 feat
 
 ![Cross-model recovery of EGFR-associated biology](prism_signaling_convergence.png)
 
-## Conclusion
+## Biological Interpretation
 
 Random Forest demonstrated the strongest direct target prioritization in this analysis, ranking EGFR as its most important predictive feature. LASSO and Elastic Net also recovered EGFR among their highest-ranked genes, while Bayesian Ridge prioritized several associated signaling components without ranking EGFR among its top 25 features.
 
