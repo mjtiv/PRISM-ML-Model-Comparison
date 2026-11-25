@@ -145,6 +145,24 @@ LASSO and Elastic Net exhibited similar held-out performance. Elastic Net achiev
 
 ### Held-out Prediction Error
 
+Held-out prediction error measures how accurately a trained model 
+predicts drug response in cancer cell lines that were not used 
+during model training. In this study, 30% of the dataset was 
+reserved for testing model generalization.
+
+Two complementary error metrics were used:
+
+- **Root Mean Squared Error (RMSE):** Measures prediction error 
+  while placing greater emphasis on larger deviations between 
+  predicted and observed drug responses.
+- **Mean Absolute Error (MAE):** Measures the average absolute 
+  difference between predicted and observed drug responses.
+
+For both metrics, lower values indicate better predictive 
+performance, with an ideal value of zero. Evaluating held-out 
+prediction errors allows comparison of model generalization 
+rather than simply how well each model fits its training data.
+
 ![Testing RMSE and MAE comparison](prism_test_errors.png)
 
 Elastic Net achieved the lowest testing RMSE, while LASSO achieved the lowest testing MAE. The differences among LASSO, Elastic Net, and Random Forest were small. Bayesian Ridge exhibited the highest testing errors. Overall, held-out R² values indicate modest predictive performance across all four models.
