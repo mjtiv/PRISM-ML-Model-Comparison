@@ -2,6 +2,17 @@
 
 Comparative analysis of LASSO, Elastic Net, Bayesian Ridge, and Random Forest regression using PRISM drug response and CRISPR gene-effect data to explore predictors of Lazertinib response in cancer cell lines.
 
+### AI Assistance and Transparency
+
+This analysis was performed with AI assistance in code development,
+data analysis, visualization, and documentation.
+
+Feedback and constructive criticism are welcomed. If any errors,
+methodological concerns, or opportunities for improvement are
+identified, please contact M. Joseph Tomlinson IV
+([mjtiv@udel.edu](mailto:mjtiv@udel.edu)) so that the issue can be
+reviewed and addressed as appropriate.
+
 ## Methodology
 
 ![Shared analytical workflow](prism_workflow.png)
