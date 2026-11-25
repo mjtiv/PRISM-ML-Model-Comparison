@@ -184,6 +184,52 @@ Random Forest ranked EGFR, the known molecular target of Lazertinib, first among
 
 These observations illustrate that predictive generalization and recovery of known drug-target biology are distinct evaluation objectives. Random Forest achieved the strongest direct target prioritization in this experiment despite lower held-out predictive performance than LASSO and Elastic Net.
 
+## Overall Conclusion
+
+From a predictive performance standpoint, LASSO and Elastic Net
+demonstrated the strongest generalization on the testing dataset.
+Although neither model ranked EGFR as the top predictive feature,
+both successfully prioritized EGFR among their highest-ranked genes.
+
+Random Forest exhibited slightly higher testing prediction errors
+but successfully ranked EGFR, the known molecular target of
+Lazertinib, as its most important predictive feature.
+
+Bayesian Ridge demonstrated the weakest testing performance and
+substantial evidence of overfitting. Nevertheless, the model
+identified several genes associated with EGFR-related signaling,
+suggesting that some biologically relevant information was captured.
+
+When evaluated solely using conventional machine learning performance
+metrics, none of the four models demonstrated particularly strong
+predictive performance. However, the recovery of biologically
+relevant genes across multiple independent modeling approaches
+provides an encouraging observation from a drug discovery and
+target identification perspective.
+
+These findings highlight an important distinction between
+predictive accuracy and biological relevance. A model with modest
+predictive performance may still provide useful insights into
+potential drug targets and associated signaling pathways.
+
+### Important Considerations
+
+This analysis represents a retrospective proof-of-concept study.
+Lazertinib was selected with prior knowledge of its established
+mechanism of action and molecular target, EGFR. Consequently,
+biological interpretation was informed by existing knowledge
+rather than conducted as a blinded target discovery exercise.
+
+The recovery of EGFR and associated signaling components is
+encouraging but does not establish that these approaches would
+successfully identify previously unknown drug targets.
+
+Future studies should evaluate additional compounds, repeated
+training and testing partitions, independent datasets, and
+blinded target identification to determine the robustness and
+broader applicability of this approach.
+
+
 ### Limitations
 
 These results represent one compound and one train/test partition. Differences in model performance are descriptive, not evidence of statistically significant superiority. Preprocessing and tuning differences may affect comparisons; future work should fit preprocessing within training and cross-validation folds, evaluate repeated splits, and validate results on independent datasets and additional compounds. Feature rankings are model-specific associations and do not establish causality.
