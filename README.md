@@ -109,3 +109,42 @@ These findings represent a single experimental configuration using one compound 
 
 Feature rankings are not evidence of causality. Direct target recovery does not necessarily indicate superior overall predictive performance, and these models are not independent biological validations because they share the same underlying data.
 
+## Comparative Model Performance
+
+All four regression models were evaluated using the same reported training and testing partition. Performance was assessed using the coefficient of determination (R²), root mean squared error (RMSE), and mean absolute error (MAE).
+
+| Model | Training R² | Training RMSE | Training MAE | Testing R² | Testing RMSE | Testing MAE | EGFR rank |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| LASSO | 0.318 | 0.600 | 0.439 | 0.184 | 0.690 | **0.520** | 5 |
+| Elastic Net | 0.408 | 0.559 | 0.413 | **0.188** | **0.688** | 0.522 | 6 |
+| Random Forest | 0.766 | 0.351 | 0.230 | 0.162 | 0.699 | 0.523 | **1** |
+| Bayesian Ridge | 1.000 | 3.51 × 10⁻⁶ | 2.60 × 10⁻⁶ | 0.056 | 0.742 | 0.583 | Outside top 25 |
+
+Bold values indicate the best observed held-out metric or direct target rank. Values are rounded from the saved model outputs.
+
+### Training and Testing Performance
+
+![Training and testing R-squared comparison](prism_r2_comparison.png)
+
+LASSO and Elastic Net exhibited similar held-out performance. Elastic Net achieved the highest testing R² (0.188), while LASSO exhibited the smallest training-to-testing R² gap. Random Forest achieved higher training R² but lower testing R² than either regularized linear model. Bayesian Ridge achieved nearly perfect training fit but substantially weaker testing performance, consistent with pronounced overfitting.
+
+### Held-out Prediction Error
+
+![Testing RMSE and MAE comparison](prism_test_errors.png)
+
+Elastic Net achieved the lowest testing RMSE, while LASSO achieved the lowest testing MAE. The differences among LASSO, Elastic Net, and Random Forest were small. Bayesian Ridge exhibited the highest testing errors. Overall, held-out R² values indicate modest predictive performance across all four models.
+
+### Predictive Performance vs. Biological Target Recovery
+
+Random Forest ranked EGFR, the known molecular target of Lazertinib, first among its predictive features. LASSO and Elastic Net ranked EGFR fifth and sixth, respectively. Bayesian Ridge did not rank EGFR among its top 25 features. All four models nevertheless prioritized GAB1, PTPN11, GRB2, and RRAS2 among their top 25 features.
+
+These observations illustrate that predictive generalization and recovery of known drug-target biology are distinct evaluation objectives. Random Forest achieved the strongest direct target prioritization in this experiment despite lower held-out predictive performance than LASSO and Elastic Net.
+
+### Limitations
+
+These results represent one compound and one train/test partition. Differences in model performance are descriptive, not evidence of statistically significant superiority. Preprocessing and tuning differences may affect comparisons; future work should fit preprocessing within training and cross-validation folds, evaluate repeated splits, and validate results on independent datasets and additional compounds. Feature rankings are model-specific associations and do not establish causality.
+
+
+
+
+
