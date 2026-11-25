@@ -61,3 +61,51 @@ This is an exploratory model comparison, not a definitive benchmark or clinical 
 
 Some notebook narrative comments refer to an earlier classification-based Random Forest analysis; the current comparison uses continuous regression for all four models.
 
+## Results and biological interpretation
+
+Lazertinib, a third-generation EGFR tyrosine kinase inhibitor, was selected to investigate whether machine learning models trained on CRISPR gene dependency profiles could recover its known molecular target and associated signaling biology.
+
+### Comparative gene ranking
+
+| Gene | Random Forest | LASSO | Elastic Net | Bayesian Ridge |
+|---|---:|---:|---:|---:|
+| **EGFR** | **1** | **5** | **6** | — |
+| GAB1 | 3 | 8 | 7 | 1 |
+| PTPN11 | 5 | 2 | 2 | 4 |
+| GRB2 | 4 | 10 | 4 | 9 |
+| RRAS2 | 16 | 6 | 8 | 5 |
+| TP63 | 2 | 1 | 3 | — |
+| NOTCH2 | — | 4 | 1 | 2 |
+| ERBB2 | 7 | — | — | — |
+| ERBB3 | 12 | — | — | — |
+| BRAF | 20 | — | — | — |
+
+*Ranks are based on model-specific feature importance or absolute coefficient magnitude. A dash indicates a gene outside the top 25.*
+
+![EGFR target ranking across four models](prism_target_ranking.png)
+
+| Model | EGFR rank | Biological interpretation |
+|---|---:|---|
+| Random Forest | 1 | Direct molecular target ranked first |
+| LASSO | 5 | Direct target and associated signaling genes recovered |
+| Elastic Net | 6 | Direct target and associated signaling genes recovered |
+| Bayesian Ridge | Outside top 25 | Associated signaling genes recovered |
+
+### Cross-model convergence
+
+All four models identified GAB1, PTPN11, GRB2, and RRAS2 among their top 25 features. This convergence suggests that CRISPR gene dependency profiles may capture biologically informative signatures associated with Lazertinib sensitivity.
+
+![Cross-model recovery of EGFR-associated biology](prism_signaling_convergence.png)
+
+## Conclusion
+
+Random Forest demonstrated the strongest direct target prioritization in this analysis, ranking EGFR as its most important predictive feature. LASSO and Elastic Net also recovered EGFR among their highest-ranked genes, while Bayesian Ridge prioritized several associated signaling components without ranking EGFR among its top 25 features.
+
+These findings illustrate the potential of complementary machine learning approaches to recover known drug-target biology from high-dimensional CRISPR dependency data. Cross-model convergence may provide a useful exploratory strategy for identifying biologically relevant predictive features.
+
+### Future directions and limitations
+
+These findings represent a single experimental configuration using one compound and one train/test partition. Additional random seeds, repeated validation, independent datasets, and additional compounds with established mechanisms of action are needed to assess generalizability. Future analyses should also address the preprocessing limitations described in the methodology.
+
+Feature rankings are not evidence of causality. Direct target recovery does not necessarily indicate superior overall predictive performance, and these models are not independent biological validations because they share the same underlying data.
+
