@@ -122,6 +122,21 @@ All four regression models were evaluated using the same reported training and t
 
 Bold values indicate the best observed held-out metric or direct target rank. Values are rounded from the saved model outputs.
 
+**Metric Interpretation Key:**
+
+- **R² (Coefficient of Determination):** Higher is better.
+  Ideal = 1.0; 0 indicates baseline performance;
+  negative values indicate worse-than-baseline performance.
+- **RMSE (Root Mean Squared Error):** Lower is better.
+  Ideal = 0. Penalizes larger prediction errors.
+- **MAE (Mean Absolute Error):** Lower is better.
+  Ideal = 0. Represents the average absolute prediction error.
+- **EGFR Rank:** Lower is better. Ideal = 1, indicating
+  EGFR is the highest-ranked predictive feature.
+- **Training vs. Testing:** Smaller performance gaps are
+  generally preferred. Strong training performance combined
+  with weak testing performance may indicate overfitting.
+
 ### Training and Testing Performance
 
 ![Training and testing R-squared comparison](prism_r2_comparison.png)
